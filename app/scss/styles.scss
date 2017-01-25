@@ -20,12 +20,13 @@ $desk: 75em;
 
 $black: #5B5B5B;
 $grey: #E8E8E8;
-$blue: #81C4FF;
+$primary: #FFC15F;
 
 /* FONT
 =================================================================*/
 
-@import url('https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600,700');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
 @mixin font-size($sizeValue: 1.6)
 {
     font-size: ($sizeValue * 10) + px;
@@ -54,17 +55,25 @@ html{
     font-size: 62.5%;
     box-sizing: border-box;
 }
+* {
+    -webkit-transition: all 0.2s ease;
+       -moz-transition: all 0.2s ease;
+        -ms-transition: all 0.2s ease;
+         -o-transition: all 0.2s ease;
+            transition: all 0.2s ease;
+}
 *, *:before, *:after {
     box-sizing: inherit;
 }
 body {
     margin:0;
-    font-family: 'Titillium Web', sans-serif;
+    font-family: 'Playfair Display', serif;
     line-height: normal;
     overflow-x: hidden;
     width: 100%;
-    border: 12px solid $blue;
+    border: 12px solid $primary;
     background: $grey;
+    background-size: 100%;
     color: $black;
     height: 100vh;
     min-height: 390px;
@@ -88,12 +97,57 @@ h1,h2,h3,h4{
 p{
     @include font-size(1.8);
     margin:0 0 1em 0;
-    line-height: 28px;
+    line-height: 24px;
+    color: #fff;
+    text-shadow: 2px 2px 2px #4a4a4a;
+    @media screen and (min-width: $tab) {
+
+    }
 }
 
 /* PAGE STYLES
 =================================================================*/
 
+#page-container{
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+    overflow: hidden;
+}
+.full-image{
+    position: absolute;
+    width: 280%;
+    margin-left: -10%;
+    max-width: none;
+    height: auto;
+    left: 0;
+    top: 0;
+    right: 0;
+    -webkit-transform: scale(1);
+       -moz-transform: scale(1);
+        -ms-transform: scale(1);
+         -o-transform: scale(1);
+            transform: scale(1);
+    -webkit-animation: scaleImages 25s linear infinite alternate;
+       -moz-animation: scaleImages 25s linear infinite alternate;
+        -ms-animation: scaleImages 25s linear infinite alternate;
+         -o-animation: scaleImages 25s linear infinite alternate;
+            animation: scaleImages 25s linear infinite alternate;
+    @media screen and (min-width: $tab) {
+        width: 220%;
+        margin-left: 0;
+    }
+    @media screen and (min-width: $tab-wide) {
+        width: 140%;
+        margin-left: 0;
+    }
+    @media screen and (min-width: $desk) {
+        width: 100%;
+        margin-left: 0;
+    }
+}
 .wrapper{
     max-width: 1200px;
     margin: 0 auto;    
@@ -107,29 +161,39 @@ p{
     }
     .title{
         background: #343434;
-        padding: 1.2em 3em;
+        padding: 1.6em 3.8em;
         display: inline-block;
         *display: inline;
         *zoom: 1;
-        margin-bottom: 1.4em;
+        margin-bottom: 2.2em;
         box-shadow: 2px 4px 15px 0px rgba(0,0,0,0.5);
     }
     h1, h2{
         text-align: center;
-        @include font-size(2.4);
+        @include font-size(2);
         text-transform: uppercase;
         color: #fff;
+        font-family: 'Josefin Sans', sans-serif;
+        @media screen and (min-width: $tab) {
+            @include font-size(2.4);
+        }
+    }
+    h1{
+        margin-bottom: 0.2em;
     }
     h2{
-        @include font-size(2);
+        @include font-size(1.6);
     }
     p{
-        max-width: 60%;
+        max-width: 80%;
         margin: 0 auto;
+        @media screen and (min-width: $tab) {
+            max-width: 60%;
+        }
     }
     .colour-line{
         width: 22%;
-        background: $blue;
+        background: $primary;
         height: 6px;
         border-radius: 6px;
         display: block;
@@ -137,26 +201,74 @@ p{
     }
     &.va-c{
         position: relative;
-        top: 50%;
-        transform: translateY(-50%);
+        top: 10%;
+        @media screen and (min-width: $tab) {
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+               -moz-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                 -o-transform: translateY(-50%);
+                    transform: translateY(-50%);
+        }
+    }
+}
+@-webkit-keyframes scaleImages {
+    to {
+         -webkit-transform: scale(1.2);
+            -moz-transform: scale(1.2);
+             -ms-transform: scale(1.2);
+              -o-transform: scale(1.2);
+                 transform: scale(1.2);
+    }
+}
+@keyframes scaleImages {
+    to {
+        -webkit-transform: scale(1.2);
+           -moz-transform: scale(1.2);
+            -ms-transform: scale(1.2);
+             -o-transform: scale(1.2);
+                transform: scale(1.2);
     }
 }
 .links{
     position: absolute;
-    bottom: 40px;
-    left: 40px;
-    right: 40px;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    box-shadow: 2px 4px 15px 0px rgba(0,0,0,0.5);
+    @media screen and (min-width: $tab) {
+        left: 10%;
+        right: 10%;
+    }
+    @media screen and (min-width: $tab-wide) {
+        left: 15%;
+        right: 15%;
+    }
+    @media screen and (min-width: $desk) {
+        left: 20%;
+        right: 20%;
+    }
     ul{
         list-style: none;
         margin: 0;
-        padding: 2em;
+        padding: 1.2em;
         background: rgba(255, 255, 255, 0.75);
+        @media screen and (min-width: $tab) {
+            padding: 2em;
+        }
         li{
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
             a{
                 color: $black;
-                @include font-size(2);
+                @include font-size(1.8);
                 text-decoration: none;
                 margin: 0 2em;
+                font-weight: bold;
+                &:hover{
+                    text-shadow: 1px 1px 1px #4a4a4a;
+                }
             }
         }
     }

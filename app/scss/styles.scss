@@ -18,8 +18,9 @@ $desk: 75em;
 /* COLOURS
 =================================================================*/
 
-$grey: #717061;
-$blue: #0079C1;
+$black: #5B5B5B;
+$grey: #E8E8E8;
+$blue: #81C4FF;
 
 /* FONT
 =================================================================*/
@@ -62,6 +63,12 @@ body {
     line-height: normal;
     overflow-x: hidden;
     width: 100%;
+    border: 12px solid $blue;
+    background: $grey;
+    color: $black;
+    height: 100vh;
+    min-height: 390px;
+    text-align: center;
 }
 a:focus,
 button:focus{
@@ -69,18 +76,6 @@ button:focus{
 }
 img{
     max-width: 100%;
-}
-.wrapper{
-    max-width: 1200px;
-    margin: 0 auto;    
-    width: 85%;
-    @include clearfix;
-    clear: both;
-    position: relative;
-    display: block;
-    @media screen and (min-width: $tab) {
-        width: 95%;
-    }
 }
 
 /* TYPE
@@ -93,9 +88,76 @@ h1,h2,h3,h4{
 p{
     @include font-size(1.8);
     margin:0 0 1em 0;
-    line-height: 22px;
-    color: $grey;
+    line-height: 28px;
 }
 
-/* TYPE END
+/* PAGE STYLES
 =================================================================*/
+
+.wrapper{
+    max-width: 1200px;
+    margin: 0 auto;    
+    width: 86%;
+    @include clearfix;
+    clear: both;
+    position: relative;
+    display: block;
+    @media screen and (min-width: $tab) {
+        width: 95%;
+    }
+    .title{
+        background: #343434;
+        padding: 1.2em 3em;
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        margin-bottom: 1.4em;
+        box-shadow: 2px 4px 15px 0px rgba(0,0,0,0.5);
+    }
+    h1, h2{
+        text-align: center;
+        @include font-size(2.4);
+        text-transform: uppercase;
+        color: #fff;
+    }
+    h2{
+        @include font-size(2);
+    }
+    p{
+        max-width: 60%;
+        margin: 0 auto;
+    }
+    .colour-line{
+        width: 22%;
+        background: $blue;
+        height: 6px;
+        border-radius: 6px;
+        display: block;
+        margin: 2em auto 0 auto;
+    }
+    &.va-c{
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+.links{
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    right: 40px;
+    ul{
+        list-style: none;
+        margin: 0;
+        padding: 2em;
+        background: rgba(255, 255, 255, 0.75);
+        li{
+            a{
+                color: $black;
+                @include font-size(2);
+                text-decoration: none;
+                margin: 0 2em;
+            }
+        }
+    }
+}

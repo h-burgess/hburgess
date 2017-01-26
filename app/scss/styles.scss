@@ -98,9 +98,9 @@ h1,h2,h3,h4{
     padding:0px;
 }
 p{
-    @include font-size(1.8);
+    @include font-size(2.4);
     margin:0 0 1em 0;
-    line-height: 24px;
+    line-height: 28px;
     color: #fff;
     text-shadow: 2px 2px 2px #4a4a4a;
 }
@@ -194,6 +194,9 @@ p{
         max-width: 80%;
         margin: 0 auto;
         @media screen and (min-width: $tab) {
+            max-width: 70%;
+        }
+        @media screen and (min-width: $desk) {
             max-width: 60%;
         }
     }

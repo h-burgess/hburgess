@@ -71,13 +71,16 @@ body {
     line-height: normal;
     overflow-x: hidden;
     width: 100%;
-    border: 12px solid $primary;
+    border: 6px solid $primary;
     background: $grey;
     background-size: 100%;
     color: $black;
     height: 100vh;
     min-height: 390px;
     text-align: center;
+    @media screen and (min-width: $tab) {
+        border: 12px solid $primary;
+    }
 }
 a:focus,
 button:focus{
@@ -100,9 +103,6 @@ p{
     line-height: 24px;
     color: #fff;
     text-shadow: 2px 2px 2px #4a4a4a;
-    @media screen and (min-width: $tab) {
-
-    }
 }
 
 /* PAGE STYLES
@@ -110,11 +110,17 @@ p{
 
 #page-container{
     position: fixed;
-    top: 12px;
-    right: 12px;
-    bottom: 12px;
-    left: 12px;
+    top: 6px;
+    right: 6px;
+    bottom: 6px;
+    left: 6px;
     overflow: hidden;
+    @media screen and (min-width: $tab) {
+        top: 12px;
+        right: 12px;
+        bottom: 12px;
+        left: 12px;
+    }
 }
 .full-image{
     position: absolute;
@@ -202,7 +208,9 @@ p{
     &.va-c{
         position: relative;
         top: 10%;
+        margin-top: 2em;
         @media screen and (min-width: $tab) {
+            margin-top: 0;
             top: 50%;
             -webkit-transform: translateY(-50%);
                -moz-transform: translateY(-50%);
@@ -257,15 +265,24 @@ p{
             padding: 2em;
         }
         li{
-            display: inline-block;
-            *display: inline;
-            *zoom: 1;
+            display: block;
+            @media screen and (min-width: $tab) {
+                display: inline-block;
+                *display: inline;
+                *zoom: 1;
+            }
             a{
                 color: $black;
                 @include font-size(1.8);
                 text-decoration: none;
                 margin: 0 2em;
                 font-weight: bold;
+                display: block;
+                @media screen and (min-width: $tab) {
+                    display: inline-block;
+                    *display: inline;
+                    *zoom: 1;
+                }
                 &:hover{
                     text-shadow: 1px 1px 1px #4a4a4a;
                 }
